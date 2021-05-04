@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import ProductList from "./ProductList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [authorized, setAutorized] = useState(false);
+
+  let rest = "Hello";
+  if (authorized) {
+    rest = (
+      <div>
+        <ProductList />
+        <button onClick={logout}>Logout</button>
+      </div>
+    );
+  } else {
+    rest = (
+      <div>
+        <p>Please Login!</p>
+        <button onClick={login}>Login</button>
+      </div>
+    );
+  }
+
+  function login() {
+    setAutorized(true);
+  }
+
+  function logout() {
+    setAutorized(false);
+  }
+
+  return <div>{rest}</div>;
 }
 
 export default App;
