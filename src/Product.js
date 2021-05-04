@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Product(props) {
   const [count, setCount] = useState(0);
@@ -10,15 +11,27 @@ function Product(props) {
     setCount(count - 1);
   }
   return (
-    <div>
-      <img src={props.product.image} width="50px" />
+    <div className="container-sm p-3 my-2 border">
+      <img src={props.product.image} width="50px" alt={props.product.title} />
       <strong>{props.product.title}</strong>
-      <span>{props.product.description}</span>
-      <span>{count}</span>
-      <button onClick={handleAddition}>+</button>
-      <button onClick={handleSubtraction} disabled={count === 0 ? true : false}>
+      <p>{props.product.description}</p>
+      <p>{count}</p>
+      <button
+        className="btn btn-success"
+        type="submit"
+        onClick={handleAddition}
+      >
+        +
+      </button>
+      <button
+        className="btn btn-warning"
+        type="submit"
+        onClick={handleSubtraction}
+        disabled={count === 0 ? true : false}
+      >
         -
       </button>
+      <br />
     </div>
   );
 }

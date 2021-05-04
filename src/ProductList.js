@@ -16,9 +16,13 @@ function ProductList() {
     },
   ];
   return (
-    <div>
-      <Product product={products[0]} />
-      <Product product={products[1]} />
+    <div className="row">
+      <div className="col-xs-12 col-md-8">
+        <Product product={products[0]} />
+      </div>
+      <div className="col-xs-12 col-md-8">
+        <Product product={products[1]} />
+      </div>
     </div>
   );
 }
